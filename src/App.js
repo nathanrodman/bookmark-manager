@@ -45,8 +45,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        Parent Component
-        <Subject />
+        <Subject subject={this.state.resources[0].subject} />
+        <Subject subject={this.state.resources[1].subject}/>
+        <Subject subject={this.state.resources[2].subject}/>
       </div>
     );
   }
