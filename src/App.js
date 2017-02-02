@@ -7,14 +7,22 @@ class App extends Component {
     super();
 
     this.state = {
-      resource: 'https://facebook.github.io/react/docs/thinking-in-react.html'
+      resources: [
+        {title: "Thinking in React", url: 'https://facebook.github.io/react/docs/thinking-in-react.html'},
+        {title: "ES6 var, let, or const", url:'https://medium.com/javascript-scene/javascript-es6-var-let-or-const-ba58b8dcde75#.xv9uppvae'},
+        {title: "ES6 interactive guide", url: 'http://stack.formidable.com/es6-interactive-guide/#/'}
+      ]
     };
   }
 
 
   render() {
     return (
-      <a href='{this.state.resource}'>Thinking in React</a>
+      <ul>
+        {this.state.resources.map((resource) => {
+          return <li><a href={resource.url}>{resource.title}</a></li>
+        })}
+      </ul>
     );
   }
 }
