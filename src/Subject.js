@@ -20,7 +20,6 @@ export default class Subject extends Component {
               </li>
             )
           }) }
-          <li>{this.props.items.resources[0].title}</li>
         </ul>
       </div>
     );
