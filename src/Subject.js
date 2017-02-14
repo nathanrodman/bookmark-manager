@@ -29,9 +29,8 @@ export default class Subject extends Component {
     this.setState(prevState => ({
       checkBox: !prevState.checkBox
     }));
-    console.log(this.state.checkBox);
   }
-
+  
   render() {
     return (
       <div>
@@ -57,6 +56,10 @@ export default class Subject extends Component {
             <input name="newResourceUrl" onChange={this.handleTyping.bind(this)} value={this.state.newResourceUrl}/>
           </label>
           <input type="checkbox" onChange={this.handleCheckBox.bind(this)} /> {this.state.checkBox ? "Checked" : "Unchecked"}
+        </form>
+        <form>
+          <input type="radio" name="dessert" value="cake"/> Cake <br/>
+          <input type="radio" name="dessert" value="pie"/> Pie <br/>
         </form>
       </div>
     );
