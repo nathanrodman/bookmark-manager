@@ -7,6 +7,7 @@ export default class Subject extends Component {
     this.state = {
       isClicked: false,
       newResourceTitle: '',
+      newResourceUrl: ''
     }
   }
 
@@ -17,8 +18,9 @@ export default class Subject extends Component {
   }
   
   handleTyping(event) {
+    let name = event.target.name;
     this.setState({
-      newResourceTitle: event.target.value
+      [name] : event.target.value
     })
   }
 
@@ -37,10 +39,16 @@ export default class Subject extends Component {
             }
            }) }
         </ul>
-        <p>Title</p>
-        <input defaultValue="Hello" />
-        <p>Url</p>
-        <input onChange={this.handleTyping.bind(this)} value={this.state.newResourceTitle}/>
+        <form>
+          <label>
+            title:  
+            <input name="newResourceTitle" onChange={this.handleTyping.bind(this)} value={this.state.newResourceTitle}/>
+          </label>
+          <label>
+            url:  
+            <input name="newResourceUrl" onChange={this.handleTyping.bind(this)} value={this.state.newResourceUrl}/>
+          </label>
+        </form>
       </div>
     );
   }
