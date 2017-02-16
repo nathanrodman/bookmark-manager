@@ -51,11 +51,20 @@ class App extends Component {
     ]}
   }
   
+  addNewResource(subject, resource) {
+    console.log(subject, resource);
+
+    const tempState = this.state;
+    tempState.resources[subject].resources.push(resource);
+    this.setState(tempState);
+  }
 
   render() {
     return (
       <div>
-        { this.state.resources.map( resource => <Subject items={resource} />) }
+        { this.state.resources.map( (resource, index) => {
+          return <Subject index={index} addResource={this.addNewResource.bind(this)} items={resource} />
+        }) }
       </div>
     );
   }

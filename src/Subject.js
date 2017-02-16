@@ -6,10 +6,19 @@ export default class Subject extends Component {
 
     this.state = {
       isClicked: false,
-      newResourceTitle: '',
-      newResourceUrl: '',
+      title: '',
+      url: '',
       checkBox: false,
     }
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    const newResource = {
+      title: this.state.title,
+      url: this.state.url
+    }
+    this.props.addResource(this.props.index, newResource)
   }
 
   handleClick() {
@@ -19,6 +28,7 @@ export default class Subject extends Component {
   }
   
   handleTyping(event) {
+    event.preventDefault();
     let name = event.target.name;
     this.setState({
       [name] : event.target.value
@@ -30,11 +40,11 @@ export default class Subject extends Component {
       checkBox: !prevState.checkBox
     }));
   }
-  
+
   render() {
     return (
       <div>
-        <h3 onClick={this.handleClick.bind(this)}>{this.props.items.subject}</h3>
+        <h3 onClick={this.handleClick.bind(this)} style={this.state.isClicked ? {fontStyle: 'italic'} : {} }>{this.props.items.subject}</h3>
         <ul>
           { this.props.items.resources.map((resource) => {
             if(this.state.isClicked){
@@ -47,17 +57,19 @@ export default class Subject extends Component {
            }) }
         </ul>
         <form>
-          <label>
+          <label htmlFor="title">
             title:  
-            <input name="newResourceTitle" onChange={this.handleTyping.bind(this)} value={this.state.newResourceTitle}/>
+            <input name="title" onChange={this.handleTyping.bind(this)} value={this.state.title} placeholder="Title"/>
           </label>
-          <label>
+          <br/>
+          <label htmlFor="url">
             url:  
-            <input name="newResourceUrl" onChange={this.handleTyping.bind(this)} value={this.state.newResourceUrl}/>
+            <input name="url" onChange={this.handleTyping.bind(this)} value={this.state.url} placeholder="Url"/>
           </label>
-          <input type="checkbox" onChange={this.handleCheckBox.bind(this)} /> {this.state.checkBox ? "Checked" : "Unchecked"}
+          <button onClick={this.handleSubmit.bind(this)} >Add Resource</button>
         </form>
         <form>
+          <input type="checkbox" onChange={this.handleCheckBox.bind(this)} /> {this.state.checkBox ? "Checked" : "Unchecked"} <br/>
           <input type="radio" name="dessert" value="cake"/> Cake <br/>
           <input type="radio" name="dessert" value="pie"/> Pie <br/>
         </form>
