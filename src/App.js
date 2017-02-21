@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Subject from './Subject'
+import Subject from './Subject';
+import SubjectForm from './SubjectForm'
 
 class App extends Component {
   constructor() {
@@ -81,11 +82,20 @@ class App extends Component {
           return <Subject index={index} addResource={this.addNewResource.bind(this)} items={resource} />
         }) }
         <br />
-        <form id="subject-form">
-          <input placeholder="Subject" onChange={this.handleInput.bind(this)}/>
-          <button onClick={this.addNewSubject.bind(this)}>Create New Subject</button>
-        </form>
+      
+        {/*<form id="subject-form">
+         <input placeholder="Subject" onChange={this.handleInput.bind(this)}/>
+         <button onClick={this.addNewSubject.bind(this)}>Create New Subject</button>
+       </form>*/}
+
+       
+       <div>
+       {/*and again not sure what to do here yet, but I believe in myself*/}
+       <SubjectForm addJoySubject={this.addJoySubject}/>
+       </div>
       </div>
+      
+
     );
   }
 }
