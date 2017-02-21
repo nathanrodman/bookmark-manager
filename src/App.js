@@ -52,11 +52,22 @@ class App extends Component {
   }
   
   addNewResource(subject, resource) {
-    console.log(subject, resource);
-
     const tempState = this.state;
     tempState.resources[subject].resources.push(resource);
     this.setState(tempState);
+  }
+
+  createNewSubject(){
+    this.setState({subjectForm: true});
+    console.log(this.state.subjectForm)
+  }
+
+  createForm(){
+    return (
+      <form>
+        <input name="subject" placeholder="Subject"></input> 
+      </form>
+    )
   }
 
   render() {
@@ -65,6 +76,8 @@ class App extends Component {
         { this.state.resources.map( (resource, index) => {
           return <Subject index={index} addResource={this.addNewResource.bind(this)} items={resource} />
         }) }
+        <button onClick={this.createNewSubject.bind(this)}>Create New Subject</button>
+        
       </div>
     );
   }

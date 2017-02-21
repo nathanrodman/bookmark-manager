@@ -66,6 +66,15 @@ export default class Subject extends Component {
             url:  
             <input name="url" onChange={this.handleTyping.bind(this)} value={this.state.url} placeholder="Url"/>
           </label>
+          <br />
+
+          <label htmlFor="type">Type: </ label>
+          <select>
+            <option value="video">Video</option>
+            <option value="article">Article</option>
+            <option value="tutorial">Tutorial</option>
+          </select>
+
           <button onClick={this.handleSubmit.bind(this)} >Add Resource</button>
         </form>
         <form>
