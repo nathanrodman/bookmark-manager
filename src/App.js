@@ -57,17 +57,21 @@ class App extends Component {
     this.setState(tempState);
   }
 
-  createNewSubject(){
-    this.setState({subjectForm: true});
-    console.log(this.state.subjectForm)
+  addNewSubject(event){
+    event.preventDefault();
+    const tempState = this.state;
+    tempState.resources.push({subject: tempState.subjectTitle, resources: []});
+    this.setState(tempState, () => {
+      // clear the form after adding the new Subject 
+      document.getElementById('subject-form').reset();
+    });
   }
 
-  createForm(){
-    return (
-      <form>
-        <input name="subject" placeholder="Subject"></input> 
-      </form>
-    )
+  handleInput(e){
+    e.preventDefault();
+    this.setState({
+      subjectTitle: e.target.value
+    })
   }
 
   render() {
@@ -76,8 +80,11 @@ class App extends Component {
         { this.state.resources.map( (resource, index) => {
           return <Subject index={index} addResource={this.addNewResource.bind(this)} items={resource} />
         }) }
-        <button onClick={this.createNewSubject.bind(this)}>Create New Subject</button>
-        
+        <br />
+        <form id="subject-form">
+          <input placeholder="Subject" onChange={this.handleInput.bind(this)}/>
+          <button onClick={this.addNewSubject.bind(this)}>Create New Subject</button>
+        </form>
       </div>
     );
   }
