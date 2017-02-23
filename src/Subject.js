@@ -51,7 +51,7 @@ export default class Subject extends Component {
     const resourceIndex = rxIndex.exec(event.target.name)[1];
     
     console.log(resourceIndex);
-    // this.props.deleteResource(this.props.index);
+    // this.props.deleteResource(this.props.index, resourceIndex);
   }
 
   render() {
