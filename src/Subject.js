@@ -12,6 +12,7 @@ export default class Subject extends Component {
     }
 
     this.deleteResource = this.deleteResource.bind(this);
+    this.deleteSubject = this.deleteSubject.bind(this);
   }
 
   handleSubmit(event) {
@@ -51,11 +52,18 @@ export default class Subject extends Component {
     this.props.deleteResource(this.props.index, resourceIndex);
   }
 
+  deleteSubject(event){
+    event.preventDefault();
+
+    console.log("howdy");
+   // this.props.deleteSubject(this.props.index);
+  }
+
   render() {
     return (
       <div>
         <h3 onClick={this.handleClick.bind(this)} style={this.state.isClicked ? {fontStyle: 'italic'} : {} }>{this.props.items.subject}</h3>
-        <button>Delete Subject</button>
+        <button onClick={this.deleteSubject}>Delete Subject</button>
         <ul>
           { this.props.items.resources.map((resource, index) => {
             if(this.state.isClicked){
