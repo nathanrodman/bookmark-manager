@@ -58,15 +58,12 @@ class App extends Component {
     this.setState(tempState);
   }
 
-  addNewSubject(event){
-    event.preventDefault();
-    const tempState = this.state;
-    tempState.resources.push({subject: tempState.subjectTitle, resources: []});
-    this.setState(tempState, () => {
-      // clear the form after adding the new Subject 
-      document.getElementById('subject-form').reset();
-    });
-  }
+addNewSubject(subject) {
+  const tempState = this.state;
+  tempState.resources.push(subject);
+  this.setState(tempState);
+
+}
 
   handleInput(e){
     e.preventDefault();
@@ -91,7 +88,7 @@ class App extends Component {
        
        <div>
        {/*and again not sure what to do here yet, but I believe in myself*/}
-       <SubjectForm addJoySubject={this.addJoySubject}/>
+       <SubjectForm addSubject={this.addNewSubject.bind(this)}/>
        </div>
       </div>
       

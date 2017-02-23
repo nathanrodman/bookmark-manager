@@ -10,13 +10,13 @@ export default class SubjectForm extends Component {
   }
 
     addNewSubject(event){
+    const newSubject = {
+        subject: this.state.subjectTitle,
+        resources: []
+    }
     event.preventDefault();
-    const tempState = this.state;
-    tempState.resources.push({subject: tempState.subjectTitle, resources: []});
-    this.setState(tempState, () => {
-      // clear the form after adding the new Subject 
-      document.getElementById('subject-form').reset();
-    });
+    
+    this.props.addSubject(newSubject);
   }
 
 
@@ -28,13 +28,7 @@ export default class SubjectForm extends Component {
   }
 
   //this is Joy not knowing exactly what is going on
-  addJoySubject(event){
-      event.preventDefault();
-      const tempState = this.state;
-      tempState.resources.push({subject: tempState.subjectTitle, resources: []});
-      this.setState(tempState, () => {this.addJoySubject});
-
-  }
+  
 
 
 
