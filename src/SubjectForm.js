@@ -15,7 +15,7 @@ export default class SubjectForm extends Component {
         resources: []
     }
     event.preventDefault();
-    
+
     this.props.addSubject(newSubject);
   }
 
@@ -27,7 +27,6 @@ export default class SubjectForm extends Component {
     })
   }
 
-  //this is Joy not knowing exactly what is going on
   
 
 

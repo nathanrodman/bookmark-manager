@@ -58,10 +58,10 @@ class App extends Component {
     this.setState(tempState);
   }
 
-addNewSubject(subject) {
-  const tempState = this.state;
-  tempState.resources.push(subject);
-  this.setState(tempState);
+  addNewSubject(subject) {
+   const tempState = this.state;
+   tempState.resources.push(subject);
+    this.setState(tempState);
 
 }
 
