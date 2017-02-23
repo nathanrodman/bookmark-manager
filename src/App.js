@@ -61,9 +61,8 @@ class App extends Component {
   addNewSubject(subject) {
    const tempState = this.state;
    tempState.resources.push(subject);
-    this.setState(tempState);
-
-}
+   this.setState(tempState);
+  }
 
   handleInput(e){
     e.preventDefault();

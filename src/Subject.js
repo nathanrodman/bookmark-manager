@@ -41,6 +41,15 @@ export default class Subject extends Component {
     }));
   }
 
+/*
+  deleteResource(event){
+    event.preventDefault();
+
+    this.props.deleteResource(this.props.index); // resourcesIndex as second arg
+  }
+
+  */
+
   render() {
     return (
       <div>
@@ -51,6 +60,8 @@ export default class Subject extends Component {
                return (
                 <li>
                   <a href={resource.url}>{resource.title}</a>
+                  <br />
+                  <button >Delete Resource</button>
                 </li>
               )
             }
@@ -76,11 +87,6 @@ export default class Subject extends Component {
           </select>
 
           <button onClick={this.handleSubmit.bind(this)} >Add Resource</button>
-        </form>
-        <form>
-          <input type="checkbox" onChange={this.handleCheckBox.bind(this)} /> {this.state.checkBox ? "Checked" : "Unchecked"} <br/>
-          <input type="radio" name="dessert" value="cake"/> Cake <br/>
-          <input type="radio" name="dessert" value="pie"/> Pie <br/>
         </form>
       </div>
     );
