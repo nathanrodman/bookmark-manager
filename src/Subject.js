@@ -47,10 +47,7 @@ export default class Subject extends Component {
     event.preventDefault();
 
     const rxIndex = /btn\-([0-9])/;
-
     const resourceIndex = rxIndex.exec(event.target.name)[1];
-    
-    console.log(resourceIndex);
     this.props.deleteResource(this.props.index, resourceIndex);
   }
 
@@ -58,6 +55,7 @@ export default class Subject extends Component {
     return (
       <div>
         <h3 onClick={this.handleClick.bind(this)} style={this.state.isClicked ? {fontStyle: 'italic'} : {} }>{this.props.items.subject}</h3>
+        <button>Delete Subject</button>
         <ul>
           { this.props.items.resources.map((resource, index) => {
             if(this.state.isClicked){
