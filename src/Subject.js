@@ -56,7 +56,7 @@ export default class Subject extends Component {
     event.preventDefault();
 
     console.log("howdy");
-   // this.props.deleteSubject(this.props.index);
+    this.props.deleteSubject(this.props.index);
   }
 
   render() {
