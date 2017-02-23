@@ -10,6 +10,8 @@ export default class Subject extends Component {
       url: '',
       checkBox: false,
     }
+
+    this.deleteResource = this.deleteResource.bind(this);
   }
 
   handleSubmit(event) {
@@ -41,27 +43,29 @@ export default class Subject extends Component {
     }));
   }
 
-/*
   deleteResource(event){
     event.preventDefault();
 
-    this.props.deleteResource(this.props.index); // resourcesIndex as second arg
-  }
+    const rxIndex = /btn\-([0-9])/;
 
-  */
+    const resourceIndex = rxIndex.exec(event.target.name)[1];
+    
+    console.log(resourceIndex);
+    // this.props.deleteResource(this.props.index);
+  }
 
   render() {
     return (
       <div>
         <h3 onClick={this.handleClick.bind(this)} style={this.state.isClicked ? {fontStyle: 'italic'} : {} }>{this.props.items.subject}</h3>
         <ul>
-          { this.props.items.resources.map((resource) => {
+          { this.props.items.resources.map((resource, index) => {
             if(this.state.isClicked){
                return (
                 <li>
                   <a href={resource.url}>{resource.title}</a>
                   <br />
-                  <button >Delete Resource</button>
+                  <button onClick={this.deleteResource} name={`btn-${index}`}>Delete Resource</button>
                 </li>
               )
             }
