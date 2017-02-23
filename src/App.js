@@ -70,6 +70,12 @@ class App extends Component {
    this.setState(tempState);
   }
 
+  deleteSubject(subjectIndex){
+    const tempState = this.state;
+    tempState.resources.splice(subjectIndex, 1);
+    this.setState(tempState);
+  }
+
   handleInput(e){
     e.preventDefault();
     this.setState({
@@ -86,6 +92,7 @@ class App extends Component {
               index={index} 
               addResource={this.addNewResource.bind(this)}
               deleteResource={this.deleteResource.bind(this)}
+              deleteSubject={this.deleteSubject.bind(this)}
               items={resource} 
               />
           ) 
