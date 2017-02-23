@@ -54,9 +54,9 @@ export default class Subject extends Component {
 
   deleteSubject(event){
     event.preventDefault();
-
-    console.log("howdy");
-    this.props.deleteSubject(this.props.index);
+    const r = confirm("Are you sure you want to delete this Subject? All resources will also be deleted.")
+    if(r)
+      this.props.deleteSubject(this.props.index);
   }
 
   render() {

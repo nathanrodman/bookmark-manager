@@ -4,7 +4,7 @@ import './App.css';
 import Subject from './Subject';
 import SubjectForm from './SubjectForm'
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super();
 
@@ -97,17 +97,9 @@ class App extends Component {
               />
           ) 
         }) }
-        <br />
-      
-        {/*<form id="subject-form">
-         <input placeholder="Subject" onChange={this.handleInput.bind(this)}/>
-         <button onClick={this.addNewSubject.bind(this)}>Create New Subject</button>
-       </form>*/}
-
-       
+        <br />     
        <div>
-       {/*and again not sure what to do here yet, but I believe in myself*/}
-       <SubjectForm addSubject={this.addNewSubject.bind(this)}/>
+         <SubjectForm addSubject={this.addNewSubject.bind(this)}/>
        </div>
       </div>
       
@@ -115,5 +107,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
