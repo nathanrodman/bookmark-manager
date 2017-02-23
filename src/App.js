@@ -58,6 +58,12 @@ class App extends Component {
     this.setState(tempState);
   }
 
+  deleteResource(subjectIndex, resourceIndex){
+    const tempState = this.state;
+    tempState.resources[subjectIndex].resources.splice(resourceIndex, 1);
+    this.setState(tempState);
+  }
+
   addNewSubject(subject) {
    const tempState = this.state;
    tempState.resources.push(subject);
@@ -75,7 +81,14 @@ class App extends Component {
     return (
       <div>
         { this.state.resources.map( (resource, index) => {
-          return <Subject index={index} addResource={this.addNewResource.bind(this)} items={resource} />
+          return (
+            <Subject 
+              index={index} 
+              addResource={this.addNewResource.bind(this)}
+              deleteResource={this.deleteResource.bind(this)}
+              items={resource} 
+              />
+          ) 
         }) }
         <br />
       
